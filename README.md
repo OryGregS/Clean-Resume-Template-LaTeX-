@@ -2,11 +2,12 @@
 Modified version of the [Software Engineer Resume Template](https://www.overleaf.com/latex/examples/resume-template-for-software-engineer/fvsqzcybnwdn) written by Xavier Danaux (xdanaux@gmail.com). 
 
 Things I changed:
-1. Added modifiable RGB-valued color to the fa-icons & turned the contact information into clickable links.
-2. Changed margins to 1in on all sides.
-3. Modified moderncv commands to add a thicker (1.5pt) horizontal line after each section.
-4. Modified cv-entry commands to add a thinner (0.5pt) horizontal line after employment/education basic information.
-5. Added command '\addcventryseparator' to separate different entries under the same section. See 'Education' as an example in the picture below.
+1. Added modifiable RGB-valued color to the fa-icons & all horizontal lines.
+2. Turned the contact information into clickable links.
+3. Changed margins to 1in on all sides.
+4. Modified moderncv commands to add a thicker (1.5pt) horizontal line after each section.
+5. Modified cv-entry commands to add a thinner (0.5pt) horizontal line after employment/education basic information.
+6. Added command '\addcventryseparator' to separate different entries under the same section (). See 'Education' as an example in the picture below.
 
 ## How to use
 1. Download code as .zip folder & extract files
