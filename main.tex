@@ -1,0 +1,249 @@
+%% Copyright 2006-2013 Xavier Danaux (xdanaux@gmail.com). Original work can be found at https://www.overleaf.com/latex/examples/resume-template-for-software-engineer/fvsqzcybnwdn
+%
+%% Modified in 2020 by Gregory Smith (ory.g95@gmail.com).
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License version 1.3c,
+% available at http://www.latex-project.org/lppl/.
+
+
+
+\documentclass[11pt,a4paper,roman]{moderncv}        % possible options include font size ('10pt', '11pt' and '12pt'), paper size ('a4paper', 'letterpaper', 'a5paper', 'legalpaper', 'executivepaper' and 'landscape') and font family ('sans' and 'roman')
+
+% modern themes
+\moderncvstyle{banking}                            % style options are 'casual' (default), 'classic', 'oldstyle' and 'banking'
+\moderncvcolor{blue}                                % color options 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
+%\renewcommand{\familydefault}{\sfdefault}         % to set the default font; use '\sfdefault' for the default sans serif font, '\rmdefault' for the default roman one, or any tex font name
+\nopagenumbers{}                                  % uncomment to suppress automatic page numbering for CVs longer than one page
+
+% character encoding
+\usepackage[utf8]{inputenc}
+\usepackage{fontawesome}
+\usepackage{fontspec}
+\usepackage{tabularx}
+\usepackage{ragged2e}
+\usepackage{xcolor}
+
+% This RGB value defines the color for the fa-icons in contact-info & the line separators.
+\definecolor{cv-accent-color}{RGB}{68, 123, 182}
+
+\newcommand{\addcventryseparator}{\bigskip\textcolor{cv-accent-color}{\rule{\textwidth}{1pt}}\smallskip}
+
+\makeatletter
+\RenewDocumentCommand{\section}{sm}{%
+  \strut\sectionstyle{#2\hfill}%
+  \par\nobreak\vspace{-1.75ex}%
+  \textcolor{cv-accent-color}{\rule{\textwidth}{1.5pt}}\par\nobreak%
+  \addvspace{1ex}\@afterheading
+  }
+
+\RenewDocumentCommand{\subsection}{sm}{
+  \strut\subsectionstyle{#2}{\color{color1}{\subsectionfill}}%
+  \par\nobreak\addvspace{0.5ex}\@afterheading%
+  }
+%
+\makeatother
+
+% if you are not using xelatex ou lualatex, replace by the encoding you are using
+%\usepackage{CJKutf8}                              % if you need to use CJK to typeset your resume in Chinese, Japanese or Korean
+
+% adjust the page margins
+\usepackage[left=1in,top=1in,right=1in,bottom=1in]{geometry}
+%\usepackage{multicol}
+%\setlength{\hintscolumnwidth}{3cm}                % if you want to change the width of the column with the dates
+%\setlength{\makecvtitlenamewidth}{10cm}           % for the 'classic' style, if you want to force the width allocated to your name and avoid line breaks. be careful though, the length is normally calculated to avoid any overlap with your personal info; use this at your own typographical risks...
+
+\usepackage{import}
+
+% personal data
+\name{John}{Doe}
+% \title{Curriculum Vitae}                               % optional, remove / comment the line if not wanted
+\address{123 John Doe St, City, ST }{}{}% optional, remove / comment the line if not wanted; the "postcode city" and and "country" arguments can be omitted or provided empty
+% \phone[mobile]{909-839-3097}                   % optional, remove / comment the line if not wanted
+% \phone[fixed]{01234 123456}                    % optional, remove / comment the line if not wanted
+%\phone[fax]{+3~(456)~789~012}                      % optional, remove / comment the line if not wanted
+% \email{xpan1@swarthmore.edu}                               % optional, remove / comment the line if not wanted
+% \homepage{shawnpan.me}                         % optional, remove / comment the line if not wanted
+% \extrainfo{}                 % optional, remove / comment the line if not wanted
+%\photo[64pt][0.4pt]{picture}                       % optional, remove / comment the line if not wanted; '64pt' is the height the picture must be resized to, 0.4pt is the thickness of the frame around it (put it to 0pt for no frame) and 'picture' is the name of the picture file
+%\quote{Some quote}                                 % optional, remove / comment the line if not wanted
+
+% to show numerical labels in the bibliography (default is to show no labels); only useful if you make citations in your resume
+%\makeatletter
+%\renewcommand*{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}
+%\makeatother
+%\renewcommand*{\bibliographyitemlabel}{[\arabic{enumiv}]}% CONSIDER REPLACING THE ABOVE BY THIS
+
+% bibliography with mutiple entries
+%\usepackage{multibib}
+%\newcites{book,misc}{{Books},{Others}}
+  
+\newcommand*{\customcventry}[7][.215em]{
+  \begin{tabular}{@{}l} 
+    {\bfseries #4}
+  \end{tabular}
+  \hfill% move it to the right
+  \begin{tabular}{l@{}}
+     {\bfseries #5}
+  \end{tabular} \\
+  \begin{tabular}{@{}l} 
+    {\itshape #3}
+  \end{tabular}
+  \hfill% move it to the right
+  \begin{tabular}{l@{}}
+     {\itshape #2}
+  \end{tabular}\vspace{-1ex}
+  \textcolor{cv-accent-color}{\rule{\textwidth}{0.5pt}\medskip}
+  %\vspace{1pt}
+  \ifx&#7&%
+  \else{\\%
+    \begin{minipage}{\maincolumnwidth}%
+      \small#7%
+    \end{minipage}}\fi%
+  \par\addvspace{#1}}
+
+\newcommand*{\customcvproject}[4][.25em]{
+%   \vfill\noindent
+  \begin{tabular}{@{}l} 
+    {\bfseries #2}
+  \end{tabular}
+  \hfill% move it to the right
+  \begin{tabular}{l@{}}
+     {\itshape #3}
+  \end{tabular}
+  \ifx&#4&%
+  \else{\\%
+    \begin{minipage}{\maincolumnwidth}%
+      \small#4%
+    \end{minipage}}\fi%
+  \par\addvspace{#1}}
+
+\setlength{\tabcolsep}{12pt}
+
+%----------------------------------------------------------------------------------
+%            content
+%----------------------------------------------------------------------------------
+\begin{document}
+%\begin{CJK*}{UTF8}{gbsn}                          % to typeset your resume in Chinese using CJK
+%-----       resume       ---------------------------------------------------------
+\makecvtitle
+\vspace*{-22mm}
+
+\begin{center}
+    \begin{tabular}{ l c r }
+            \href{mailto:john.doe@email.com}{
+                \textcolor{cv-accent-color}{\faEnvelope}%
+                \enspace john.doe@email.com 
+            } &
+            \href{https://linkedin.com/in/johndoeprofile/}{
+                \textcolor{cv-accent-color}{\faLinkedin}%
+                \enspace /in/johndoeprofile
+            } &
+            \href{tel:123-456-7891}{
+                \textcolor{cv-accent-color}{\faMobile}%
+                \enspace (123) 456-7891 
+            } \\
+    \end{tabular}
+\end{center}
+
+\section{Experience}
+\vspace{-5pt}
+    {\customcventry{Mar 2019 -- Present}{Software Engineer}{Super Awesome Company, LLC}{City, ST}{}
+    {
+    \textbf{\emph{Super Awesome Data Service}}
+    \begin{itemize}
+        %  
+        \vspace{3pt}
+        \item Built out data processes for a new data service product offering and collaborated with 2 teams and C-level executives to successfully launch the service from beta to production in under 3 months.
+        %
+        \vspace{3pt}
+        \item Optimized data service ETL/ELT pipelines that resulted with an average 600\% speed-up and ramped up development \& testing velocity to reach project deadlines.
+        %
+    \end{itemize}
+    \vspace{10pt}
+    \textbf{\emph{Super Awesome Software Application}}
+    \begin{itemize}
+	    %
+        \vspace{3pt}
+        \item Implemented efficient bulk data quality processes in Java \& SQL Server that standardizes data flowing through all ETL pipelines.
+	    %
+        \vspace{3pt}
+        \item Architected, implemented, and delivered a fast \& flexible data extraction solution in Java using multi-threaded JDBC connections that was designed to quickly adapt to a client's ever-changing requirements.
+	    %
+        \vspace{3pt}
+        \item Led efforts to improve code and pipeline documentation coverage by 15\%.
+	    %
+        \vspace{3pt}
+        \item Enhanced developer efficiency over 10\% by replacing manual pipeline debugging and testing efforts with a common set of development tools. 
+        %
+    \end{itemize}
+    }}
+    
+\bigskip
+\section{Education}
+\vspace{-5pt}
+    {\customcventry{In Progress}{Pursuing Master's of Science in Computer Science}{Well-known Graduate College}{Remote}{}{
+        \begin{itemize}
+    	    %
+            \item \textbf{Specialization:} Computing Systems
+            %
+            \vspace{3pt}
+            \item \textbf{Motivation:} To further learn algorithms, software architecture/design, and machine learning techniques.
+    	    %
+        \end{itemize}
+        }       
+    }
+    %
+    \addcventryseparator
+    %
+    \vspace{-2pt}
+    {\customcventry{Apr 2019}{Bachelor's of Science in Data Science with Minor in Computer Science}{Public 4-Year Party School}{City, ST}{}
+    {
+    \begin{itemize}
+	    %
+        \item \textbf{Graduate-level coursework:} Machine Learning; Artificial Neural Networks; Parallel Computations; Applied Data Mining; Big Data Analysis; Regression Analysis; Computer Based Data Analysis.
+	    %
+		\vspace{3pt}
+		\item \textbf{Undergraduate-level coursework:} Data \& File Structures; Web Technologies; Python Programming; R Programming for Data Science; Big Data Storage \& Retrieval.
+	    %
+    \end{itemize}
+    }}
+    
+\bigskip
+\section{Languages \& Technologies}
+    \begin{minipage}{\maincolumnwidth}\small{
+        \begin{itemize}
+    	    %
+            \item \textbf{Languages:} \hspace{10pt} Scala; Java; Python; Groovy; R; Batch; Bash.
+    	    %
+    		\vspace{3pt}
+    		\item \textbf{Databases:} \hspace{11pt} SQL Server; Oracle; Hive.
+    	    %
+    		\vspace{3pt}
+    	    \item \textbf{Build Tools:} \hspace{8pt}Ant; Maven; Gradle; SBT.
+    	    %
+    		\vspace{3pt}
+    		\item \textbf{Other:} \hspace{29pt} Spark; Hadoop; Linux (Debian-based); Intellij; VSCode; JIRA; SVN; Git.
+    	    %
+        \end{itemize}}
+    \end{minipage}%
+
+\bigskip
+\section{Hobbies \& Interests}
+\begin{minipage}{\maincolumnwidth}\small{
+	\begin{itemize}
+        \item \textbf{Aggressive Stamp Collecting:} Stamp-collecting is the name, shaking-down mailmen is the game.
+        %
+        \vspace{3pt}
+        %
+		\item \textbf{Volunteer Environmental Data Collection:} Collect \& record vertical grass growth data for... fun.
+	\end{itemize}}%
+\end{minipage}%
+
+\nocite{*}
+\bibliographystyle{plain}
+\bibliography{publications}
+\end{document}
+
+
+%% end of file `template.tex'.
