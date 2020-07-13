@@ -7,7 +7,7 @@ Things I changed:
 3. Changed margins to 1in on all sides.
 4. Modified moderncv commands to add a thicker (1.5pt) horizontal line after each section.
 5. Modified cv-entry commands to add a thinner (0.5pt) horizontal line after employment/education basic information.
-6. Added command '\addcventryseparator' to separate different entries under the same section. See 'Education' as an example in the picture below.
+6. Added command '\addcventryseparator' to separate different entries under the same section. Handles vertical spacing and creates a 1.0pt-thick horizontal line.  See 'Education' as an example in the picture below.
 
 ## How to use
 1. Download code as .zip folder & extract files
